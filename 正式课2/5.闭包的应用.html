@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <button>1</button>
+    <button>2</button>
+    <button>3</button>
+<script>
+
+</script>
+</body>
+</html>
+<script>
+// for (let i = 0; i < 10; i++) {
+//     function fn(a){
+//         setTimeout(function(){//子函数被外界定时器引用
+//             console.log(a);//子函数引用父函数的实参
+//         },1000)
+//     }
+//     fn(i);//父函数的fn形成闭包
+// }
+
+
+
+const btns = document.querySelectorAll('button');
+for (let i = 0; i < btns.length; i++) {
+// //   console.log(i);
+// //方法一  
+//     function fn(aa){
+//     btns[i].onclick = function(){//子函数被外界点击事件引用
+//        alert(aa);//子函数引用父函数的参数
+//     }
+// }
+//  fn(i+1); //父函数的fn形成闭包
+
+
+//匿名函数自执行的闭包应用
+(function(aa){
+    btns[aa].onclick = function(){
+        alert(aa);
+    }
+})(i);
+}
+</script>

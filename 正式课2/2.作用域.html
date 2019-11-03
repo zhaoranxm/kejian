@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+// var a = 20;
+// function fn(){//在函数内开辟一个执行栈
+//     //形参赋值
+//     //变量提升
+//     //执行上下文
+//     //销毁作用域
+//     var a = 30;//锁在执行栈出不去
+// }
+// fn();
+// console.log(a);//全局的20
+
+
+
+// function fn(){
+//     var a = 50;
+//     function f(){
+//         console.log(a);//50
+//     }
+//     f();
+// }
+// fn();
+// console.log(a);
+
+
+// var b = 10;
+// function fn(){
+//     //变量提升找  var function/ var a /var b
+//     alert(a);//undefined
+//     alert(b);//undefined
+//     var a = 20;
+//     b = 50;
+//     alert(a);//20
+//     var b;
+// }
+// fn();
+// alert(b);//10
+
+
+
+// var b = 10;
+// function fn(){
+//     //变量提升找 var a/var b
+//     alert(a);//undefined
+//     var a = 20;
+//     alert(b);//undefined
+//     window.b = 30;
+//     alert(a);//20
+//     b = 50;
+//     var b;
+// }
+// fn();
+// alert(b);//window 下的b  30
+
+
+
+// var a = 20;
+// function fn(a){
+//     alert(a);//形参赋值  20
+//     var b = 30;
+//     a = 40;
+//     alert(a);//40
+// }
+// fn(a);
+// alert(a);//20
+
+
+
+// var a = 20;
+// function fn(a){
+//     /*
+//        形参赋值：a = 20
+//        域解析：var b
+//        执行上下文：a = 20
+//                   b = 30
+//                   a = 40
+//     */ 
+
+// alert(a);//20
+// var b = 30;
+// a = 40;
+// var a;
+// alert(a);//40
+// }
+// fn(a);
+// alert(a);//20
+
+
+
+
+var a = function(){console.log(123)}
+function fn(a){
+/*
+域解析： var b
+        // var a
+        a = function a(){
+            alert(5);
+        }
+执行上下文：
+        a = function a(){
+                    alert(5);
+                }
+                b = 30;
+                a = 40
+*/ 
+    alert(a);// function a(){alert(5);}
+    var b = 30;
+    a = 40;
+    var a;
+    alert(a);//40
+    function a(){
+        alert(5);
+    }
+}
+fn(a);
+alert(a);//function(){console.log(123)}
+</script>
