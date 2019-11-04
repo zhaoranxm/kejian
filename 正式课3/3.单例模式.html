@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+/*
+   单例模式：
+       单例：单独的实例
+       实例：描述具体的事物（你真胖：具体）
+       构造函数：描述一个类的封装过程（老师：语文老师、数学老师）
+       高级单例模式：让当前这个实例功能更加强大，还可以隐蔽或者暴露细节信息
+       高级单例模式需要知道哪些东西？
+         1.为什么要用高级单例模式？
+           让当前这个实例功能更加强大，还可以隐蔽或者暴露细节信息
+           解决了命名冲突的问题
+         2.高级单例模式如何写？
+           (function(){
+               return{
+
+               }
+           })()
+           最后让一个变量去收这个功能强大的对手
+
+    解决命名冲突的问题：
+       1.封闭空间(把变量或者函数放到函数中)
+         let a = 10;
+         (function(){
+           let a = 20;
+         })()
+       2.命名空间
+       let name = 10;
+       obj.name
+       let name = 20;
+       obj2.name
+*/
+
+//原始值：字符串、数学、布尔值...
+  // let name = '珠峰';
+  // let ip2 = '回龙观东大街';
+  // let age = 10;
+  // let name2 = '孟记粥铺';
+  // let ip = '回龙观东大街';
+  // let age2 = 5;
+
+//引用类型（里面存着很多的原始值和引用值）
+//对象（实例）
+// let obj = {
+//   name:'珠峰',
+//   age:10,
+//   ip:'回龙观东大街',
+// }
+// console.log(Array);
+
+
+let obj2 = (function(){
+  let name = '珠峰';
+  let ip = '回龙观东大街';
+  let age = 0;
+
+  function sum(){
+    let age = 0;
+    for(let i=0;i<10;i++){
+        age++
+    }
+    return age;
+  }
+  age = sum();
+  console.log(age);//10
+  return{
+    name:name,
+    ip:ip,
+    sum:sum
+  }
+})();
+
+
+let obj3 = (function(){
+  let age = 0;
+  function sum(){
+    console.log(1);//1
+  }
+  sum();
+  console.log(obj2.sum());//10
+})();
+console.log(obj2)
+</script>

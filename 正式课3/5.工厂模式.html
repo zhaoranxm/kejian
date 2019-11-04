@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+/*
+  工厂模式：为了批量生产实例
+
+  函数 目的就是为了复用
+    
+*/
+//描述具体的事物
+// let obj = {
+//     name:'zhufeng',
+//     age:10
+// }
+// let obj2 = {
+//   name:'mengji',
+//   age:5
+// }
+// let obj3 = {
+//   name:'xiaxhi',
+//   age:2
+// }
+
+function fn(name,age){
+    //  let obj = {
+    //      name:name,
+    //      age:age
+    //  }
+    let obj = {};
+    obj.name = name;
+    obj.age = age;
+    return obj;
+}
+let obj = fn('zhufeng',10);
+console.log(obj);//{name: "zhufeng", age: 10}
+
+</script>
