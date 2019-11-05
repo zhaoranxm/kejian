@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+/*
+   push
+   Array.prototype.push
+*/
+let ary = [1,2,3];
+    // Array.prototype.mypush = function(...arg){
+    //     let nary = this.concat(arg); 
+    //     let len = nary.length;
+    //     for(let i=0;i<len;i++){
+    //         this[i] = nary[i];
+    //     }
+    //     return len;
+    // }
+    // console.log(ary.mypush(4,5,6));//6
+    // console.log(ary.concat([4,5,6]).concat([7,8]));//[1,2,....8]
+    // console.log(ary.concat([4,5],[6,7]));//[1,2,....7]
+
+
+    Array.prototype.myconcat = function(...arg){
+       return [...this,...arg.flat(Infinity)];
+    }
+    console.log(ary.myconcat([4,5],[6,7]).myconcat([8,9])); 
+    // [1, 2, 3, 4, 5, 6, 7, 8, 9] 
+</script>
