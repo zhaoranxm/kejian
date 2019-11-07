@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<meta charset="UTF-8">
+<title></title>
+<style>
+	body,
+	ul,
+	li {
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+</style>
+<link rel="stylesheet" type="text/css" href="baidu.css" />
+</head>
+
+<body>
+<div class="wrap">
+	<div class="baidu">
+		<ul id="list">
+			<li>
+				<input type="checkbox" name="che">
+				<span>泡沫</span>
+				<span>邓紫棋</span>
+			</li>
+			<li>
+				<input type="checkbox" name="che">
+				<span>说爱你</span>
+				<span>蔡依林</span>
+			</li>
+			<li>
+				<input type="checkbox" name="che">
+				<span>稻香</span>
+				<span>周杰伦</span>
+			</li>
+			<li>
+				<input type="checkbox" name="che">
+				<span>我的梦</span>
+				<span>张靓颖</span>
+			</li>
+			<li>
+				<input type="checkbox" name="che">
+				<span>怎么说我不爱你</span>
+				<span>萧敬腾</span>
+			</li>
+			<li>
+				<input type="checkbox" name="che">
+				<span>无处安放</span>
+				<span>白若溪</span>
+			</li>
+		</ul>
+		<div class="select">
+			<span><input type="checkbox" id="all"/><span>全选</span></span>
+			<div class="others">
+				<span><em></em>收藏</span>
+				<span><em></em>添加</span>
+				<span><em></em>删除</span>
+			</div>
+		</div>
+	</div>
+</div>
+<script>
+// //隔行变色
+const checkboxs = document.querySelectorAll('#list input');
+const lis = document.querySelectorAll('#list li');
+let ary = [];
+	lis.forEach((ele,i)=>{
+	ary[i] = false;
+	if(i%2)ele.classList.add('a');
+	ele.onmouseover = function(){
+		this.classList.add('b');
+	}
+	ele.onmouseout = function(){
+		//如果checkboxs[i].checked为true就添加颜色否则就不添加
+		if(!checkboxs[i].checked){
+			this.classList.remove('b');
+		}
+	}
+	checkboxs[i].onclick = function(){
+		// console.log(this.checked)//选中当前项为true,取消为false
+		ary[i] = this.checked;//[t,t,t]
+		// console.log(ary.every(item=>item))
+		all.checked = ary.every(item=>item)
+		 //查看每一项是否都为true如果有一项不为true全选就不勾选,当全部li都为true就让全选勾选
+		console.log(ary);
+	}
+});
+//全选
+all.onclick = function(){
+    checkboxs.forEach((ele,i)=>{
+         ele.checked = this.checked;//全选选中为true取消为false
+		 this.checked?lis[i].classList.add('b'):lis[i].classList.remove('b');
+		//  console.log(ary)
+		 ary[i] = this.checked;//[]刷新数组获取最新的数据
+	})
+}
+
+</script>
+</body>
+</html>
