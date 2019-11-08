@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+/*
+   浅克隆：
+   Object.assign(obj2,obj1,obj)
+
+   最后改变的是obj2,obj1不会被修改
+*/
+let obj = {
+    name:'小花',
+    age:10
+}
+let obj1 = {
+    name:'二丫',
+    sex:'男',
+    age:'28'
+}
+let obj2 = {
+    age:100
+}
+//把obj2,obj1,obj的内容赋值到{}中
+let obj3 = Object.assign({},obj2,obj1,obj);
+console.log(obj3);//age:10  name:"小花"  sex:"男"
+
+</script>

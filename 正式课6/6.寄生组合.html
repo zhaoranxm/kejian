@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+function Person(name,age){
+    this.name = name;
+    this.age = age;
+}
+Person.prototype.say =  function(){
+    alert(`我的名字叫`+this.name);
+}
+function Police(name,age){
+    Person.call(this,name,age);
+}
+Police.prototype = Object.create(Person.prototype)
+// // Police.prototype.constructor = Police;
+
+
+Police.prototype.say = function(){
+    alert(`我是警察`+this.name);
+}
+
+let p2 = new Police('赵炎',100);
+let p1 = new Person('刘成',19);
+
+p2.say();
+p1.say();
+
+
+// let obj =  Object.create({name:'haha'});
+// console.log(obj);
+</script>
