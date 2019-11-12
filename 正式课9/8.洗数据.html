@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="box"></div>
+</body>
+</html>
+<script>
+let str = `<ul class="grid infoList" id="infoList" style="height: 2800px; position: relative; padding: 0px; margin: 0px; top: -1102px;"><li class="clone" style="height: 50px;">
+            <span>高*</span>           
+            <span>河南农业大学</span>           
+            <span>生物工程</span>           
+            <span>阿里巴巴</span>
+            <span class="money"><i>18000/月</i></span>
+            <span>杭州</span>
+          </li>
+          <li style="height: 50px;">
+            <span>刘*</span>           
+            <span>宝鸡文理学院</span>           
+            <span>电子信息</span>           
+            <span></span>
+            <span class="money"><i>30000/月</i></span>
+            <span>北京</span>
+          </li>
+      
+          <li style="height: 50px;">
+            <span>申*</span>           
+            <span>南京信息工程大学</span>           
+            <span>电子科技与技术</span>           
+            <span>亚信科技</span>
+            <span class="money"><i>27000/月</i></span>
+            <span>北京</span>
+          </li>
+      
+          <li style="height: 50px;">
+            <span>宋*磊</span>           
+            <span>大连海事大学</span>           
+            <span>轮机工程</span>           
+            <span>美团</span>
+            <span class="money"><i>25000/月</i></span>
+            <span>北京</span>
+          </li>
+      
+          <li style="height: 50px;">
+            <span>刘*亚</span>           
+            <span>苏州科技学院天平学院</span>           
+            <span>计算机科学与技术</span>           
+            <span>在江苏就业</span>
+            <span class="money"><i>22000/月</i></span>
+            <span>苏州</span>
+          </li>
+      
+          <li style="height: 50px;">
+            <span>龚**</span>           
+            <span>武汉理工大学</span>           
+            <span>控制工程</span>           
+            <span>神玉科技</span>
+            <span class="money"><i>21000/月</i></span>
+            <span>北京</span>
+          </li>
+      
+          <li style="height: 50px;">
+            <span>单**</span>           
+            <span>北京石油化工学院</span>           
+            <span>油气储运</span>           
+            <span>58同城</span>
+            <span class="money"><i>21000/月</i></span>
+            <span>北京</span>
+          </li>
+      
+          <li style="height: 50px;">
+            <span>李**</span>           
+            <span>郑州航空工业管理学院</span>           
+            <span>土木工程</span>           
+            <span>好未来</span>
+            <span class="money"><i>20000/月</i></span>
+            <span>北京</span>
+          </li>
+    </ul>`;
+
+let str2 = '<span class="money clone">北京19990/月</span>';
+/*
+    (?:)表示非捕获分组，和捕获分组唯一的区别在于，非捕获分组匹配的值不会保存起来
+
+*/
+//把标签删除，最后留下文字
+let s = str.replace(/<[^>]+>/g,'').replace(/\n/g,'')
+box.innerText = s;
+let ary = s.match(/\d+(?=(?:\/))/g);
+let num = ary.reduce((pre,next)=>pre*1 + next*1,0);
+console.log(num/ary.length);
+
+</script>

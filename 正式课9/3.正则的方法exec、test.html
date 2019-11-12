@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+/*
+   正则身上的方法:
+            .exec(字符串)// 找到正则匹配的字符串(首次出现的字符【就找一次】)放到数组中,
+            .test(字符串)//查看字符串中是否有规则匹配项,有就返回true,没有返回false
+*/   
+
+/*
+   ["1", index: 4, input: "8dsa134h54h6", groups: undefined]
+
+   '1'为找到的字符
+   index: '1'首次出现的位置
+   input: 整个字符
+   groups:undefined
+   length:1 (因为找的是'1'这个字符串)
+*/
+let str = 'dsa134h54h6';
+console.log(/1/.exec(str).length);//查看字符串中是否有正则匹配项
+console.log(/\d+/.exec(str));
+
+console.log(/s/.test(str));// true  找当前字符串中是否有s这个字符
+
+</script>

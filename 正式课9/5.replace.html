@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+/*
+    string.replace(''或者放正则,'替换字符'或者放函数)
+
+*/
+// let str = '1珠2峰3';
+// console.log(str.replace('峰','疯'));//珠疯
+// console.log(str.replace(/\d+/g,''));//珠峰
+
+//过滤敏感词
+//函数的第一个参数就是每次匹配的字符，如果匹配多次那么会多次调用
+let str = '小花和二丫干一些见不得光的事';
+console.log(str.replace(/小花|二丫|不得光/g,function($0){
+    let temp = '';
+    for(let i = 0;i<$0.length;i++){
+        temp +='*';
+    }
+    return temp;
+})
+);
+</script>

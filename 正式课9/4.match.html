@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+/*
+    string.match(//)  是字符串的方法
+        找到正则匹配的字符串并且把他们放到数组中（返回值是数组）
+
+    惰性:你让它找一个，绝对不会找第二个，你让他找一堆，他绝对不会找第二堆
+    贪婪:只要符合某个规则就不停的找,直到找不到为止
+*/
+let str = '123456sdfgh67890nm890';
+console.log(str.match(/\d+/g));//"123456""67890""890"
+</script>

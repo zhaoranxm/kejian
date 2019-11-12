@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    ul{
+        list-style: none;
+    }
+    </style>
+</head>
+<body>
+    <input type="text" id="txt"><button id="btn">发送</button>
+    <ul id="ul"></ul>
+</body>
+</html>
+<script>
+btn.onclick = function(){
+    let {value} = txt;
+    let li = document.createElement('li');
+    let spl = ['卧槽','艹','尼玛'];
+    let str = '*';//替换的文字
+    let res = new RegExp(spl.join('|'),'g');// '卧槽|艹|尼玛'
+    value = value.replace(res,($0)=>{
+        //$0是每次匹配到的敏感词
+        //拿到敏感词之后要看下length 通过length去添加替换文字的个数
+        //拿到0-替换字符串长度的数字
+        let temp = '';
+        for(let i=0;i<$0.length;i++){
+           temp +=str;
+        }
+        return temp;
+    })
+    console.log(value);
+    
+    li.innerHTML = value;
+    ul.insertBefore(li,ul.children[0]);
+    txt.value = '';
+}
+</script>
