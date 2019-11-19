@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body style="height:3000px">
+<script>
+/*
+    防抖:(停下来才触发)
+        当频率很高触发事件的时候都不执行事件函数中的代码，只有停下来的时候再执行
+        debounce (回调函数,延迟多少时间)
+
+    节流:(将频率)
+        throttling 
+        每隔固定时间执行一次事件函数中的代码（0-100  10）
+*/
+
+// 防抖(debounce) 和 节流(throttling) 
+
+window.onscroll = debounce(fn,200);//滚轮挺下200毫秒之后
+function fn(){
+    console.log(1);
+}
+//防抖
+function debounce(cb,time){
+    let timer;
+    return function(...arg){
+        //当事件触发的时候就先关闭上次的timer
+        if(timer){
+            clearTimeout(timer);
+        }
+        timer = setTimeout(() => {
+            cb.call(this,...arg);
+        }, time);
+        
+    }
+}
+//节流
+// window.onscroll = throttling(fn,200)//fn;
+function throttling(cb,time){
+    let prevtime = 0;
+    return function(...arg){
+        let nowTime = +new Date;
+        if(nowTime - prevtime > time){
+            cb.call(this,...arg);
+        }
+        prevtime = nowTime;
+    }
+}
+</script>  
+</body>
+</html>
