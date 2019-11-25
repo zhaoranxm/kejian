@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body style="height:3000px">
+    
+</body>
+</html>
+<script>
+/*
+   浏览器默认行为:
+    某些行为并不是人为做的，是就浏览器悄悄做的
+
+    DOM0的方式
+    
+    要阻止默认行为要只是的什么事件触发的行为
+        ev.returnValue = false   去阻止默认行为（灵活）
+        return false  
+*/
+document.onkeydown = function(ev){
+    if(ev.keyCode === 32){
+    //    ev.returnValue = false;
+    return false;
+    }
+}
+</script>

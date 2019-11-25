@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <style>
+        #box {
+            width: 100px;
+            height: 100px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            background: skyblue;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box"></div>
+<script>
+/*
+    三大事件组成:
+        onmousedown 鼠标按下
+        onmouseup   鼠标抬起
+        onmousemove 鼠标划过
+
+    先要触发down然后才能move和up
+*/
+// box.onmousedown = function(ev){
+//     // console.log('down');
+//     let disX = ev.pageX;//按下的距离
+//     let disY = ev.pageY;
+
+// //获取移动之前元素到父级元素的距离
+// let l = box.offsetLeft;
+// let t = box.offsetTop;
+// box.onmousemove = function(ev){
+//     // console.log('move');
+//     //移动之前元素到父级的距离 +（移动的距离-按下的距离=实际移动的距离）
+//     box.style.left = l + (ev.pageX - disX) + 'px';//移动的距离
+//     box.style.top = t + (ev.pageY - disY) + 'px';
+// }
+// box.onmouseup = function(){
+//     // console.log('up');
+//     box.onmousemove = null;//鼠标松开 把move清空 
+// }
+// }
+
+
+
+
+box.onmousedown = function(ev){
+    // console.log('down');
+    //pageX按下的距离-移动之前元素到父级的距离
+    let disX = ev.pageX - box.offsetLeft;
+    let disY = ev.pageY - box.offsetTop;
+
+box.onmousemove = function(ev){
+    // console.log('move');
+    //移动的距离-按下的距离=实际移动的距离
+    box.style.left = ev.pageX - disX + 'px';//pageX移动的距离
+    box.style.top = ev.pageY - disY + 'px';
+}
+box.onmouseup = function(){
+    // console.log('up');
+    box.onmousemove = null;//鼠标松开 把move清空 
+}
+}
+</script>
+</body>
+</html>
