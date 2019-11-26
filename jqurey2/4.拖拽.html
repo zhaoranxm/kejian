@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+<style>
+#box{
+    width:100px;
+    height:100px;
+    background:slateblue;
+    position: absolute;
+    top:0;
+    left:0;
+}
+#boxShadow{
+    width:100px;
+    height:100px;
+    background:slateblue;
+    position: absolute;
+    opacity: .5;
+    top:0;
+    left:0;
+}
+</style>
+</head>
+<body id="body">
+<div id="box"></div>
+<script src="./jquery.min.js"></script>
+<script>
+/*
+    offset() -> 绝对位置
+    position() -> 基于父级的（offset）
+*/
+//点击的时候创建一个影子，松开的时候让本身和影子重合
+let num = 1;
+$('#box').mousedown(function(ev){
+    let $box2 = $('<div id="boxShadow"></div>');//创建的box2影子
+    //创建box2的时候让他的位置等于box的位置
+    $box2.css({
+        left:$('#box').offset().left,
+        top:$('#box').offset().top,
+    })
+
+    $(body).append($box2);//插入到body中
+
+    let disX = ev.pageX - $('#box').offset().left;
+    let disY = ev.pageY - $('#box').offset().top;
+    $(document).mousemove(function(ev){
+
+        //吸顶
+        let t = ev.pageY - disY;
+            if(t<100){
+                t = 0;
+            }
+
+        $box2.css({
+            left:ev.pageX - disX,
+            top:t
+        })
+
+    });
+    $(document).mouseup(function(ev){
+        $(document).off('mousemove');//松开清除move
+        $(document).off('mouseup');//松开清除自己、
+        //松开的时候让box的位置等于box2的位置（重合）
+        $('#box').css({
+            left:$box2.offset().left,
+            top:$box2.offset().top
+        })
+        $box2.remove();//重合以后删除box2
+    })
+    return false;//阻止默认行为
+})
+
+
+
+
+
+
+
+//拖拽
+// $('#box').mousedown(function(ev){
+//     let disX = ev.pageX - $('#box').offset().left;
+//     let disY = ev.pageY - $('#box').offset().top;
+
+//     $(document).mousemove(function(ev){
+//         $('#box').css({
+//             left:ev.pageX - disX,
+//             top:ev.pageY - disY
+//         })
+//     });
+
+//     $(document).mouseup(function(){
+//         $(document).off('mousemove');
+//         $(document).off('mouseup');
+//     })
+// })
+
+
+</script>
+</body>
+</html>

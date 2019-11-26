@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+<style>
+#box{
+    width:100px;
+    height:100px;
+    background: red;
+}
+</style>
+</head>
+<body>
+<div id="box">
+    <!-- <button>按钮</button> -->
+    <ul>
+        <!-- <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li> -->
+    </ul> 
+</div>
+    <button>按钮</button>
+<script src="./jquery.min.js"></script>
+<script>
+/*
+    事件三大
+        1.事件流
+        2.有哪些事件，干嘛用的
+        3.事件对象
+
+    hover: 移入、移出
+        onmouseover
+        onmouseout
+
+    mouseenter  移入
+
+    jQ中的所有事件，都是on来二次封装,JQ中的事件全部都是事件绑定
+    jq的事件都是二次封装的，如果要拿到真正的原生js事件对象
+       ev.originalEvent   （原生事件对象）
+
+    jQ中阻止冒泡和默认行为，直接return false即可
+*/
+
+// $('#box').hover(function(){
+//     console.log('移入');
+// },function(){
+//     console.log('移出');
+// })
+
+
+//事件监听  监听li
+// $('#box').delegate('li','click',function(){
+//     console.log($(this).text());//.text() 内容
+// })
+
+
+// $('#box').on('mouseenter',function(){
+//     console.log('移入');
+// })
+
+
+
+
+// $('#box').mouseover(function(){
+//     $(this).css({background:'skyblue'});
+//     $('button').click(function(){
+//         console.log('发送请求');
+        
+//     })
+// });
+// $('#box').mouseout(function(){
+//     $(this).css({background:'red'});
+// })
+/*
+    问题：
+        触发一次hover，就绑定一次click，触发的越多，绑定的就越多，当触发一次click就会执行多次的click事件
+
+    解决:
+        绑一次解绑一次，保持始终一次click
+*/
+// $('#box').hover(function(){
+//     $(this).css({background:'skyblue'});
+//     //解绑上一次，再添加一次新的click
+//     $('button').off().click(function(){
+//         console.log('发送请求');
+        
+//     })
+// },function(){
+//     $(this).css({background:'red'});
+// })
+
+
+
+// $('#box').on('click',function(){
+//     console.log(111);
+// })
+// $('#box').on('click',function(){
+//     console.log(222);
+// })
+////.on绑定   .off解绑
+// $('button').on('click',function(){
+//         $('#box').off('click.a');
+//         console.log(222);
+//         // return false;
+// });
+// $('button').mousedown(function(){return false;})
+
+
+let ary = ['二丫','小花','撒旦']
+ary.forEach((item,i)=>{
+    let $li = $('<li>'+(i+1)+'</li>');
+    $li.on('click',{data:item},function(ev){
+        // console.log(ev);
+        console.log('我的名字叫'+ev.data.data);
+    });
+    $('ul').append($li);
+})
+</script>
+</body>
+</html>

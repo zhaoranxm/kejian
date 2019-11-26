@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+<style>
+*{
+    margin: 0;
+    padding: 0;
+}
+ul{
+    list-style: none;
+}
+#nav{
+    width: 300px;
+    margin: 20px auto;
+}
+#src{
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    top:1px;
+}
+#src li{
+    padding: 10px;
+    border: 1px solid slateblue;
+}
+#src li.active{
+    border-bottom-color: white;
+}
+#nav div{
+    width: 298px;
+    height: 100px;
+    line-height: 100px;
+    text-align: center;
+    border: 1px solid slateblue;
+    display: none;
+}
+#nav div.show{
+    display: block;
+}
+</style>
+</head>
+<body>
+    <div id="nav">
+        <ul id="src">
+            <li class="active">第一个</li>
+            <li>第二个</li>
+            <li>第三个</li>
+        </ul>
+        <div class="show">悟空</div>
+        <div>八戒</div>
+        <div>悟净</div>
+    </div>
+</body>
+</html>
+<script src="./jquery.js"></script>
+<script>
+const $nav = $('#nav');
+const $lis = $nav.find('li');
+const $divs = $nav.find('div');
+
+// $lis.click(function(){
+//     $lis.removeClass('active');//把li的样式清楚
+//     $divs.removeClass('show');//把div的样式清楚
+//     $(this).addClass('active');//把当前的样式添加
+//     $divs.eq($(this).index()).addClass('show');//把当前对应的样式添加
+// })
+
+
+$lis.click(function(){
+    //把当前的class添加好，把它的兄弟的class清除
+    $(this).addClass('active').siblings('button').removeClass('active');
+    //把当前按钮对应的class添加好，把它的兄弟的class清除，
+    $divs.eq($(this).index()).addClass('show').siblings('div').removeClass('show');
+})
+</script>
