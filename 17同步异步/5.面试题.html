@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<script>
+/*
+    then里面才是微任务
+*/
+// const promise = new Promise((resolve, reject) => {
+//     console.log(1); //主线程
+//     resolve();
+//     console.log(2);//主线程
+// })
+// promise.then(() => {
+//     console.log(3);//微任务
+// })
+// console.log(4);   //主线程 
+
+
+// const promise = new Promise((resolve, reject) => {
+//     resolve('success1');
+//     reject('error');
+//     resolve('success2');
+// });
+// promise.then((res) => {
+//     console.log('then:', res);
+// }).catch((err) => {
+//     console.log('catch:', err);
+// })
+
+
+//then不是函数就穿透,直到then是函数为止
+// console.log(Promise.resolve(3))
+// Promise.resolve(1)
+// .then(2)
+// .then(_=>6)
+// .then(console.log)
+
+
+/*
+    红灯3秒亮一次，绿灯1秒亮一次，黄灯2秒亮一次；
+    如何让三个灯不断交替重复亮灯？
+    （用Promise实现）三个亮灯函数已经存在：
+*/
+
+// function fn(){
+//     let p = new Promise((resolve, reject) => {
+//         setTimeout(() => {
+//             resolve();
+//         }, 3000);
+//     })
+
+//     p.then(()=>{
+//         red();
+//         return new Promise(function(resolve){
+//             setTimeout(() => {
+//                 resolve(); 
+//             },1000);
+//         });
+//     }).then(()=>{
+//         green();
+//         return new Promise(function(resolve){
+//             setTimeout(() => {
+//                 resolve(); 
+//             },2000);
+//         });
+//     }).then(()=>{
+//         yellow();
+//     })
+// }
+
+// function red() {
+//     console.log('red');
+// }
+// function green() {
+//     console.log('green');
+// }
+// function yellow() {
+//     console.log('yellow');
+// }
+
+
+
+
+
+// var urls = ['https://www.kkkk1000.com/images/getImgData/getImgDatadata.jpg', 'https://www.kkkk1000.com/images/getImgData/gray.gif', 'https://www.kkkk1000.com/images/getImgData/Particle.gif', 'https://www.kkkk1000.com/images/getImgData/arithmetic.png', 'https://www.kkkk1000.com/images/getImgData/arithmetic2.gif', 'https://www.kkkk1000.com/images/getImgData/getImgDataError.jpg', 'https://www.kkkk1000.com/images/getImgData/arithmetic.gif', 'https://www.kkkk1000.com/images/wxQrCode2.png'];
+
+// console.log(urls)
+// function loadImg(url) {
+//     return new Promise((resolve, reject) => {
+//         const img = new Image()
+//         img.onload = function () {
+//             console.log('一张图片加载完成');
+//             resolve();
+//         }
+//         img.onerror = reject;
+//         img.src = url
+//     })
+// };
+
+// function fn(n=0,m=3){
+//     for(let i=n;i<m;i++){
+//         if(!urls[i])return;
+//         loadImg(urls[i]).then(()=>{
+//             console.log(i)
+//             if(i == 2 || i == 5 ||i == 7){ //2 5 7  
+//                 fn(m,m+3);//3,6    
+//             }
+//         });
+//     }
+// }
+// fn(0,3);
+
+
+
+
+
+// const promise1 = new Promise((resolve, reject) => {
+//     setTimeout(() => {
+//         resolve('success')
+//     }, 1000)
+// })
+// const promise2 = promise1.then(() => {
+//     throw new Error('error!!!')
+// })
+
+// console.log('promise1', promise1);//pending
+// console.log('promise2', promise2);//pending
+
+// setTimeout(() => {
+//     console.log('promise1', promise1);//resolved
+//     console.log('promise2', promise2);//reject
+// }, 2000);
+</script>
+</body>
+</html>
